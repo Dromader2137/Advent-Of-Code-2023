@@ -56,7 +56,7 @@ fn main() -> Result<(), Error> {
     while dy <= width {
         let mut dx = 1;
         while dx <= height {
-            println!("{}", state[(dy, dx)]);
+            // println!("{}", state[(dy, dx)]);
             if state[(dy, dx)] != 42 {
                 dx += 1;
                 continue;
@@ -65,14 +65,15 @@ fn main() -> Result<(), Error> {
             let mut local_numbers: Vec<u32> = Vec::new();
             for num in numbers.iter() {
                 if (num.coords_begin.y <= dy && num.coords_begin.y + 2 >= dy) &&
-                   (num.coords_begin.x <= dx + 2 && num.coords_end.x >= dx) {
-                        local_numbers.push(num.num);
-                   }
+                   ((num.coords_begin.x <= dx && num.coords_end.x >= dx - 2)){
+                    // println!("[{} {}] [{} {}] {}", num.coords_begin.x, num.coords_begin.y, num.coords_end.x, num.coords_end.y, num.num);
+                    local_numbers.push(num.num);
+                }
             }
             
             if local_numbers.len() == 2 {
-                println!("{} {}", dx, dy);
-                println!("{} {} {}", local_numbers[0], local_numbers[1], local_numbers[0] * local_numbers[1]);
+                // println!("{} {}", dx, dy);
+                // println!("{} {} {}", local_numbers[0], local_numbers[1], local_numbers[0] * local_numbers[1]);
                 result += local_numbers[0] * local_numbers[1];
             }
 
