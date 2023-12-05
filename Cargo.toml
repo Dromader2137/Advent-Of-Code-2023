@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 array2d="0.3.0"
 num="0.4.1"
+queues = "1.0.2"
